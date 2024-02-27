@@ -52,9 +52,7 @@ const StudentPage: FC<StudentPageProps> = ({ studentsData }) => {
     setFilteredData(Object.values(chartData));
   };
 
-  useEffect(() => {
-    handleFilter();
-  }, [studentsData]);
+  useEffect(handleFilter, [studentsData]);
 
   return (
     <div>
