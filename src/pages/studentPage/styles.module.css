@@ -1,0 +1,6 @@
+.pickers {
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+    padding: 20px;
+}

@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Student } from '../types';
+import StudentPage from './pages/studentPage/StudentPage';
 
 function App() {
+  const [studentsData, setStudentsData] = useState<Student[]>([]);
+
+  useEffect(() => {
+    fetch('https://hp-api.onrender.com/api/characters')
+      .then((res) => res.json())
+      .then((res) => setStudentsData(res))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <StudentPage studentsData={studentsData} />
     </div>
   );
 }
