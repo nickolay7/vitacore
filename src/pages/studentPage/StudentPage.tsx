@@ -55,31 +55,32 @@ const StudentPage: FC<StudentPageProps> = ({ studentsData }) => {
   useEffect(handleFilter, [studentsData]);
 
   return (
-    <div>
-      <h2>Student Statistics</h2>
-      <Alert message="Please choose date range in the date pickers and click button." />
-
-      <div className={styles.pickers}>
-        <div>
-          <label>From: </label>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-        </div>
-        <div>
-          <label>To: </label>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-          />
-        </div>
-        <div>
-          <button onClick={handleFilter}>Filter</button>
-        </div>
-      </div>
-      <StudentChart data={Object.values(filteredData)} />
-    </div>
+      <>
+          <h2>Student Statistics</h2>
+          <div className={styles.container}>
+              <Alert message="Please choose date range in the date pickers and click button."/>
+              <div className={styles.pickers}>
+                  <div>
+                      <label>From: </label>
+                      <DatePicker
+                          selected={startDate}
+                          onChange={(date) => setStartDate(date)}
+                      />
+                  </div>
+                  <div>
+                      <label>To: </label>
+                      <DatePicker
+                          selected={endDate}
+                          onChange={(date) => setEndDate(date)}
+                      />
+                  </div>
+                  <div>
+                      <button onClick={handleFilter}>Filter</button>
+                  </div>
+              </div>
+              <StudentChart data={Object.values(filteredData)}/>
+          </div>
+      </>
   );
 };
 

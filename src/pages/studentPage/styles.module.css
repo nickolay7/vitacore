@@ -1,6 +1,26 @@
+h2 {
+    text-align: center;
+}
+
 .pickers {
     display: flex;
     justify-content: right;
     gap: 20px;
-    padding: 20px;
+    padding: 40px;
+    order: 1;
+}
+
+.container {
+    display: flex;
+}
+
+@media  (max-width: 1200px) {
+   .container {
+       flex-direction: column;
+       align-items: start;
+   }
+    .pickers {
+        order: 2;
+        justify-content: left;
+    }
 }
