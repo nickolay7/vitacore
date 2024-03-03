@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 interface AlertProps {
   message: string;
 }
-const Alert: FC<AlertProps> = ({ message }) => {
+export const Alert: FC<AlertProps> = ({ message }) => {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -21,5 +21,3 @@ const Alert: FC<AlertProps> = ({ message }) => {
     </div>
   );
 };
-
-export default Alert;

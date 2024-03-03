@@ -1,21 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Student } from '../types';
-import StudentPage from './pages/studentPage/StudentPage';
+import { FC } from "react";
+import { StudentPage } from "./pages/studentPage";
 
-function App() {
-  const [studentsData, setStudentsData] = useState<Student[]>([]);
-
-  useEffect(() => {
-    fetch('https://hp-api.onrender.com/api/characters')
-      .then((res) => res.json())
-      .then((res) => setStudentsData(res))
-      .catch((err) => console.log(err));
-  }, []);
+const App:FC = () => {
 
   return (
-    <div className="App">
-      <StudentPage studentsData={studentsData} />
-    </div>
+      <StudentPage />
   );
 }
 

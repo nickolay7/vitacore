@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   BarChart,
   Bar,
@@ -8,14 +8,13 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+import { ChartFilter } from "./chartFilter";
 
-interface StudentChartProps {
-  data: { name: string; students: number }[];
-}
-
-const StudentChart: FC<StudentChartProps> = ({ data }) => {
+export const StudentChart = () => {
     const [width, setWidth] = useState(730);
-
+    const [filteredData, setFilteredData] = useState<
+        { houseName: string; students: number }[]
+    >([]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -30,14 +29,17 @@ const StudentChart: FC<StudentChartProps> = ({ data }) => {
     }, []);
 
   return (
-    <BarChart width={width} height={250} data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="students" fill="#8884d8" />
-    </BarChart>
+      <>
+          <ChartFilter filteredDataHandler={setFilteredData}/>
+          <BarChart width={width} height={250} data={filteredData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="houseName" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="students" fill="#8884d8" />
+          </BarChart>
+      </>
   );
 };
 
